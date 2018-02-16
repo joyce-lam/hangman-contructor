@@ -1,11 +1,8 @@
 var inquirer = require("inquirer");
 
-
-
-
-
 var word = "joyce";
 var count = 0;
+var noOfGuesses = 10;
 
 var askQuestion = function() {
 	if (count < word.length) {
@@ -14,8 +11,8 @@ var askQuestion = function() {
 				name: "question",
 				message: "What letter would you want to guess?"
 			}
-		]).then(function(answers) {
-			var newLetter = new Letter(answers.question);
+		]).then(function(answer) {
+			var newLetter = new Letter(answer.question);
 
 			newLetter.check();
 			count++;
@@ -26,10 +23,7 @@ var askQuestion = function() {
 
 askQuestion();
 
-
-
 function Letter(guessLetter) {
-
 	var guessArr = [];
 
 	this.guessLetter = guessLetter;
@@ -42,12 +36,21 @@ function Letter(guessLetter) {
 					console.log("correct!")
 					guessArr[i] = this.guessLetter;
 				} else {
-					console.log("Incorrect")
+					console.log("Incorrect. Make another guess.")
+					noOfGuesses--;
 					guessArr[i] = "_";
 				}
+
 			}
-			console.log(guessArr);
+			console.log(guessArr.join(" "));
 			this.guessOrNot = true;
-		}; 
+		} else {
+			console.log("You have guessed this letter.")
+		}
 	};
 };
+
+
+
+
+
