@@ -1,56 +1,32 @@
-var inquirer = require("inquirer");
 
-var word = "joyce";
-var count = 0;
-var noOfGuesses = 10;
 
-var askQuestion = function() {
-	if (count < word.length) {
-		inquirer.prompt([
-			{
-				name: "question",
-				message: "What letter would you want to guess?"
-			}
-		]).then(function(answer) {
-			var newLetter = new Letter(answer.question);
 
-			newLetter.check();
-			count++;
-			askQuestion();
-		});
-	};
-};
+function Letter(character) {
 
-askQuestion();
-
-function Letter(guessLetter) {
-	var guessArr = [];
-
-	this.guessLetter = guessLetter;
-	this.guessOrNot = false;
-	this.check = function() {
-		if (this.guessOrNot === false) {
-			console.log("now guessing: " + this.guessLetter);
-			for (var i = 0; i<word.length; i++) {
-				if (this.guessLetter === word[i]) {
-					console.log("correct!")
-					guessArr[i] = this.guessLetter;
-				} else {
-					console.log("Incorrect. Make another guess.")
-					noOfGuesses--;
-					guessArr[i] = "_";
-				}
-
-			}
-			console.log(guessArr.join(" "));
-			this.guessOrNot = true;
+	this.character = character;
+	this.guessed = false;
+	this.checkGuess = function() {
+		if (this.guessed === true) {
+			console.log(this.character);
+			return this.character;
 		} else {
-			console.log("You have guessed this letter.")
+			console.log("_")
+			return "_";
 		}
 	};
+	this.checkCorrect = function(guessCharacter) {
+		if (guessCharacter === this.character) {
+			this.guessed = true;
+			console.log("Correct");
+		} else {
+			console.log("Incorrect");
+		}
+		return this.guessed;
+	}
 };
 
+var letterA = new Letter("a");
 
-
-
-
+console.log(letterA.guessed);
+letterA.checkGuess();
+console.log(letterA.checkCorrect("a"));
