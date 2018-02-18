@@ -1,6 +1,4 @@
 
-
-
 function Letter(character) {
 
 	this.character = character;
@@ -10,7 +8,6 @@ function Letter(character) {
 			console.log(this.character);
 			return this.character;
 		} else {
-			console.log("_")
 			return "_";
 		}
 	};
@@ -24,18 +21,6 @@ function Letter(character) {
 	}
 };
 
-// var letterA = new Letter("a");
 
-// console.log(letterA.guessed);
-// letterA.checkIfGuessed();
-// console.log(letterA.checkIfCorrect("a"));
-
-
-// var Arr = ["a", "b", "c"];
-// var concatLetters;
-// for (var i = 0; i < Arr.length; i++) {
-// 	concatLetters += Letter.checkIfGuessed(Arr[i]);
-// }
-// console.log(concatLetters);
 
 module.exports = Letter;

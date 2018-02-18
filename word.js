@@ -1,48 +1,28 @@
 
-
 var Letter = require("./letter");
 
 function Word(letters) {
 	this.letters = letters;
-
- // 		var newLetter = new Letter(character);
-	// this.characters = [];
-
 	this.display = function() {
-		var s = "";
+		var concatLetters = "";
 		for (var i = 0; i < this.letters.length; i++) {
 			var letter = this.letters[i];
-			s += letter.checkIfGuessed() + " "
+			concatLetters += letter.checkIfGuessed() + " ";
 		}
-		return s;
-	}
-
+		return console.log(concatLetters);
+	};
 	this.checkIfCorrect = function(guessCharacter) {
-		
-	}
-
-	this.showIfGuessed = function(characters) {
-		var concatLetters;
-		for (var i = 0; i < this.characters.length; i++) {
-			concatLetters += newLetter.checkIfGuessed(this.characters[i]);
-		}
-		console.log("xyz" + concatLetters);
+		for (var i = 0; i < this.letters.length; i++) {
+			this.letters[i].checkIfCorrect(guessCharacter);
+		};
 	};
-	this.correctOrNot = function(character) {
-		newLetter.checkIfCorrect();
-	};
-	// this.addLetters = function(character) {
-	// 	this.characters.push(newLetter);
 
-	// };
+
 }
 
+module.exports = Word;
 
-var WordA = new Word();
+// var testWord = new Word([new Letter("b"), new Letter("e"), new Letter("a"), new Letter("r")]);
 
-WordA.addLetters("b");
-WordA.addLetters("c")
-
-console.log(WordA);
-
-WordA.showIfGuessed();
+// testWord.display();
+// testWord.checkIfCorrect("b");
