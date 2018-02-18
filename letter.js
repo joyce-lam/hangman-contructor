@@ -5,7 +5,7 @@ function Letter(character) {
 
 	this.character = character;
 	this.guessed = false;
-	this.checkGuess = function() {
+	this.checkIfGuessed = function() {
 		if (this.guessed === true) {
 			console.log(this.character);
 			return this.character;
@@ -14,19 +14,28 @@ function Letter(character) {
 			return "_";
 		}
 	};
-	this.checkCorrect = function(guessCharacter) {
+	this.checkIfCorrect = function(guessCharacter) {
 		if (guessCharacter === this.character) {
 			this.guessed = true;
 			console.log("Correct");
 		} else {
 			console.log("Incorrect");
 		}
-		return this.guessed;
 	}
 };
 
-var letterA = new Letter("a");
+// var letterA = new Letter("a");
 
-console.log(letterA.guessed);
-letterA.checkGuess();
-console.log(letterA.checkCorrect("a"));
+// console.log(letterA.guessed);
+// letterA.checkIfGuessed();
+// console.log(letterA.checkIfCorrect("a"));
+
+
+// var Arr = ["a", "b", "c"];
+// var concatLetters;
+// for (var i = 0; i < Arr.length; i++) {
+// 	concatLetters += Letter.checkIfGuessed(Arr[i]);
+// }
+// console.log(concatLetters);
+
+module.exports = Letter;
