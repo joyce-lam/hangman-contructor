@@ -15,7 +15,7 @@ var guessWord;
 var guessWordArr = [];
 var noOfGuesses = 5;
 var lettersGuessed = [];
-//var lettersRevealed = [];
+var userInputArr = [];
 
 // declare a function to find a word within the array
 function randomWord () { 
@@ -36,6 +36,7 @@ var wordA = new Word(guessWordArr);
 
 console.log("Guess this word: ")
 wordA.display();
+console.log("Guesses you have: " + noOfGuesses);
 
 
 var askQuestion = function() {
@@ -49,17 +50,40 @@ var askQuestion = function() {
 		]).then(function(answer) {
 			lettersGuessed.push(answer.question);
 			console.log("You have guessed: " + lettersGuessed.join(" "));
+
+			userInputArr.push(answer.question);
+			checkRepeat();
+
+
 			wordA.checkIfCorrect(answer.question);
 			wordA.display();
-			noOfGuesses--;
+
 			askQuestion();
 
 		});
+	} else {
+		console.log("Nil guesses left. Try again.")
 	};
 };
 
 askQuestion();
 
 
+function checkRepeat() {
+	for (var i = 0; i < lettersGuessed.length; i++) {
+		for (var j = 1; j <userInputArr.length; j++) {
+			if (userInputArr[j] = lettersGuessed[i]) {
+				console.log("You have guessed this letter already! Try another one.");
+				console.log(noOfGuesses);
+			} else {
+				countGuesses();
+			}
+		};
+	};
+}
 
 
+function countGuesses() {
+	noOfGuesses--;
+	console.log("Guesses left: " + noOfGuesses);
+};

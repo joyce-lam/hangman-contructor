@@ -1,4 +1,3 @@
-
 var Letter = require("./letter");
 
 function Word(letters) {
@@ -16,13 +15,7 @@ function Word(letters) {
 			this.letters[i].checkIfCorrect(guessCharacter);
 		};
 	};
-
-
-}
+};
 
 module.exports = Word;
 
-// var testWord = new Word([new Letter("b"), new Letter("e"), new Letter("a"), new Letter("r")]);
-
-// testWord.display();
-// testWord.checkIfCorrect("b");
