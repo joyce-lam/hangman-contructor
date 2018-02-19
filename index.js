@@ -12,30 +12,54 @@ var wordList = ["afghanistan", "albania", "algeria", "andorra", "angola", "argen
 //var remainedGuesses = 10; 
 //var lettersGuessed = [];
 var guessWord;
+var guessWordArr = [];
+var noOfGuesses = 5;
+var lettersGuessed = [];
 //var lettersRevealed = [];
 
 // declare a function to find a word within the array
 function randomWord () { 
 	guessWord = wordList[Math.floor(Math.random()*wordList.length)];
 	console.log(guessWord);
-	
 };
 
 randomWord();
 
 
-
-var guessWordArr = [];
 	
 for (var i = 0; i < guessWord.length; i++) {
 	guessWordArr.push(new Letter(guessWord.charAt(i)));
 };
 
-console.log(guessWordArr);
-var wordA = new Word(guessWordArr);
-console.log(wordA);
 
+var wordA = new Word(guessWordArr);
+
+console.log("Guess this word: ")
 wordA.display();
-wordA.checkIfCorrect("a");
-wordA.display();
-wordA.checkIfCorrect("o");
+
+
+var askQuestion = function() {
+	if (noOfGuesses >= 0) {
+		inquirer.prompt([
+			{
+				name: "question",
+				message: "What letter is in your mind?"
+
+			}
+		]).then(function(answer) {
+			lettersGuessed.push(answer.question);
+			console.log("You have guessed: " + lettersGuessed.join(" "));
+			wordA.checkIfCorrect(answer.question);
+			wordA.display();
+			noOfGuesses--;
+			askQuestion();
+
+		});
+	};
+};
+
+askQuestion();
+
+
+
+

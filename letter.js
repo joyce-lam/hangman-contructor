@@ -15,6 +15,7 @@ function Letter(character) {
 		if (guessCharacter === this.character) {
 			this.guessed = true;
 			console.log("Correct");
+			this.checkIfGuessed();
 		} else {
 			console.log("Incorrect");
 		}
