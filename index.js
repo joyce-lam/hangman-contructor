@@ -15,7 +15,6 @@ var lettersGuessed = [];
 // declare a function to find a word within the array
 function randomWord () { 
 	guessWord = wordList[Math.floor(Math.random()*wordList.length)];
-	console.log(guessWord);
 	return guessWord;
 };
 
