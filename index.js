@@ -8,7 +8,7 @@ var wordList = ["afghanistan", "albania", "algeria", "andorra", "angola", "argen
 
 var guessWord;
 var guessWordArr = [];
-var noOfGuesses = 5;
+var noOfGuesses = 10;
 var lettersGuessed = [];
 
 
@@ -32,7 +32,8 @@ console.log("Guess this word: ");
 
 var askQuestion = function() {
 	if (noOfGuesses > 0) {
-		newWord.display();
+		var a = newWord.display();
+
 		console.log("Guesses you have: " + noOfGuesses);
 		inquirer.prompt([
 			{
@@ -60,12 +61,16 @@ var askQuestion = function() {
 				newWord.checkIfCorrect(answer.question);
 			}
 
+			if (newWord.isComplete()) {
+				console.log("You have guessed the word!");
+				return;
+			} 
 
 			askQuestion();
 
 		});
 	} else {
-		console.log("Nil guesses left. Try again.")
+		console.log("Nil guesses left. Try another word.")
 	};
 };
 
@@ -76,7 +81,7 @@ function validateString(char) {
 	if (char.match(/[A-Z]/gi)) {
 		return true;
 	} else {
-		console.log("Please enter a valid letter from a - z");
+		console.log("Please enter a valid letter from a - z.");
 	}
 };
 

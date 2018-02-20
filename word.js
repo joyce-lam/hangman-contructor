@@ -6,7 +6,7 @@ function Word(letters) {
 		var concatLetters = "";
 		for (var i = 0; i < this.letters.length; i++) {
 			var letter = this.letters[i];
-			concatLetters += letter.checkIfGuessed() + " ";
+			concatLetters += letter.toStr() + " ";
 		}
 		return console.log(concatLetters);
 	};
@@ -14,6 +14,14 @@ function Word(letters) {
 		for (var i = 0; i < this.letters.length; i++) {
 			this.letters[i].checkIfCorrect(guessCharacter);
 		};
+	};
+	this.isComplete = function() {
+		for (var i = 0; i < this.letters.length; i++) {
+			if (!this.letters[i].isGuessed()) {
+				return false;
+			}
+		}
+		return true;
 	};
 };
 
