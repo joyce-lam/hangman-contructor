@@ -21,3 +21,12 @@ In order to run this hangman game, you also need to install the following Node p
 (3) index.js
 	* This file contains the logic for the game.
 	* A random word is selected and the Word constructor is used to store it. The user will be prompted for each guess. 
+
+## Built With
+* Node.js
+* Npm Inquirer.js 
+* JavaScript
+
+
+## License
+This porject is licensed under the MIT License - see the [https://github.com/joyce-lam/hangman-contructor/blob/master/LICENSE](LICENSE.md) file for details.
